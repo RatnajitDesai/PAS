@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:paddingStart="10dp"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <ImageView
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_alignParentStart="true"
+        android:layout_centerVertical="true"
+        android:src="@drawable/ic_share"
+        android:id="@+id/ivChannel" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Transport"
+        android:layout_centerVertical="true"
+        android:layout_toEndOf="@id/ivChannel"
+        android:layout_marginStart="10dp"
+        android:textSize="20sp"
+        android:textColor="@color/design_default_color_on_secondary"
+        style="@style/TextAppearance.AppCompat.SearchResult.Title" />
+
+    <com.google.android.material.chip.Chip
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        style="@style/Widget.MaterialComponents.Chip.Action"
+        android:layout_alignParentEnd="true"
+        app:cornerRadius="20dp"
+        android:layout_margin="20dp"
+        android:text="Subscribe"
+        android:layout_centerHorizontal="true" />
+
+</RelativeLayout>

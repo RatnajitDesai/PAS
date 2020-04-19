@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/relLayout1">
+
+        <androidx.appcompat.widget.AppCompatImageView
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:id="@+id/profilePic"
+            android:src="@color/colorPrimaryDark"
+            android:layout_alignParentStart="true"
+            android:layout_marginStart="10dp" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="20dp"
+            android:text="Kopar-khairane Police"
+            android:layout_toEndOf="@id/profilePic"
+            android:layout_marginStart="20dp"
+            android:layout_centerVertical="true"
+            style="@style/TextAppearance.MaterialComponents.Subtitle1" />
+
+    </RelativeLayout>
+
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/relLayout2"
+        android:layout_marginTop="10dp"
+        android:layout_below="@id/relLayout1">
+
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:maxHeight="250dp"
+            android:src="@color/colorPrimary"
+            android:id="@+id/postImages" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:maxLines="5"
+            android:text="sdasdadasdadadasdasdandlkanldalkdljkldjlasdlkajldkjalksdjlakjdlkajlkdjalskdjlkajsdlkajdlkajlksdjlajsldasjdlajlsdjlajldskajslkdjlaksjdsdsajjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjlkkkkkkkkkkasdad;adsajkkkkkkkkkkkknjasdkjashkjhaksjdhakjsdnakjsnkjdksakdasdjndakjdnkasj"
+            android:padding="10dp"
+            android:id="@+id/postMessage" />
+
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/relLayout3"
+        android:layout_marginTop="10dp"
+        android:layout_below="@id/relLayout2">
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btnLike"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:icon="@drawable/ic_thumb_up"
+            style="@style/Widget.MaterialComponents.Button.OutlinedButton"
+            android:text="Like"
+            android:layout_alignParentStart="true"
+            android:layout_marginStart="20dp" />
+
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btnShare"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:icon="@drawable/ic_share"
+            style="@style/Widget.MaterialComponents.Button.OutlinedButton"
+            android:text="Share"
+            android:layout_marginEnd="20dp"
+            android:layout_alignParentEnd="true" />
+    </RelativeLayout>
+
+</RelativeLayout>
