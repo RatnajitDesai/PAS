@@ -9,6 +9,7 @@ import android.text.TextWatcher;
 import android.util.Log;
 import android.view.View;
 import android.widget.ArrayAdapter;
+import android.widget.ImageView;
 import android.widget.ProgressBar;
 import android.widget.Toast;
 
@@ -44,6 +45,7 @@ public class RegisterActivity extends AppCompatActivity implements View.OnClickL
     private TextInputLayout mPinCodeLayout;
     private MaterialButton mValidate, mRegister;
     private ProgressBar mProgressBar;
+    private ImageView mBackBtn;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -62,6 +64,15 @@ public class RegisterActivity extends AppCompatActivity implements View.OnClickL
         mValidate = findViewById(R.id.btnValidatePin);
         mRegister = findViewById(R.id.register);
         mProgressBar = findViewById(R.id.progressBar);
+        mBackBtn = findViewById(R.id.btnBack);
+
+        mBackBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                finish();
+            }
+        });
+
         mRegister.setOnClickListener(this);
         mValidate.setOnClickListener(this);
 
