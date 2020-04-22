@@ -1,18 +1,25 @@
 package com.hecvd19.pas.login.ui;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.view.View;
+import android.widget.ProgressBar;
+import android.widget.Toast;
 
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.lifecycle.Observer;
+import androidx.lifecycle.ViewModelProvider;
 
 import com.google.android.material.button.MaterialButton;
 import com.google.android.material.textfield.TextInputEditText;
 import com.hecvd19.pas.R;
+import com.hecvd19.pas.home.MainActivity;
+import com.hecvd19.pas.login.models.LoginMessages;
 import com.hecvd19.pas.login.models.LoginViewModel;
+import com.hecvd19.pas.register.ui.RegisterActivity;
 
 
 public class LoginActivity extends AppCompatActivity implements View.OnClickListener {
@@ -23,21 +30,24 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
 
     //widgets
     MaterialButton mLogin, mRegister;
-    TextInputEditText mUsername, mPassword;
+    ProgressBar mProgressBar;
+    TextInputEditText mEmail, mPassword;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
-        loginViewModel = new LoginViewModel();
+        loginViewModel = new ViewModelProvider(this).get(LoginViewModel.class);
         mLogin = findViewById(R.id.login);
         mRegister = findViewById(R.id.register);
-        mUsername = findViewById(R.id.username);
-        mPassword = findViewById(R.id.password);
+        mEmail = findViewById(R.id.txtEmail);
+        mPassword = findViewById(R.id.txtPassword);
+        mProgressBar = findViewById(R.id.progressBar);
+
         mLogin.setOnClickListener(this);
         mRegister.setOnClickListener(this);
 
-        mUsername.addTextChangedListener(new TextWatcher() {
+        mEmail.addTextChangedListener(new TextWatcher() {
             @Override
             public void beforeTextChanged(CharSequence s, int start, int count, int after) {
 
@@ -79,10 +89,11 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
             @Override
             public void onChanged(Boolean result) {
                 if (!result) {
-                    mUsername.setError("Invalid Email Id");
+                    mEmail.setError("Invalid Email Id");
                 }
             }
         });
+
     }
 
     void verifyPassword(String password) {
@@ -99,7 +110,7 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
 
     void setUI() {
 
-        loginViewModel.validInputs(mUsername.getText().toString(), mPassword.getText().toString()).observe(this, new Observer<Boolean>() {
+        loginViewModel.validInputs(mEmail.getText().toString(), mPassword.getText().toString()).observe(this, new Observer<Boolean>() {
             @Override
             public void onChanged(Boolean aBoolean) {
                 mLogin.setEnabled(aBoolean);
@@ -113,22 +124,60 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
         switch (v.getId()) {
             case R.id.login: {
                 /**
-                 * @TODO: Login with firebase auth
+                 * Login with firebase auth
                  */
+                mProgressBar.setVisibility(View.VISIBLE);
+                disableViews(mEmail, mPassword, mLogin, mRegister);
+                loginViewModel.loginUser(mEmail.getText().toString(), mPassword.getText().toString())
+                        .observe(this, new Observer<String>() {
+                            @Override
+                            public void onChanged(String msg) {
+                                switch (msg) {
+                                    case LoginMessages.LOGIN_SUCCESS:
+                                        Intent intent = new Intent(getApplicationContext(), MainActivity.class);
+                                        startActivity(intent);
+                                        enableViews(mEmail, mPassword, mLogin, mRegister);
+                                        mProgressBar.setVisibility(View.GONE);
+                                    default:
+                                        Toast.makeText(LoginActivity.this, msg, Toast.LENGTH_SHORT).show();
+                                        enableViews(mEmail, mPassword, mLogin, mRegister);
+                                        mProgressBar.setVisibility(View.GONE);
+                                }
+                            }
+                        });
 
                 break;
             }
             case R.id.register: {
                 /**
-                 * @TODO: Start register activity
+                 * Start register activity
                  */
-
+                Intent intent = new Intent(getApplicationContext(), RegisterActivity.class);
+                startActivity(intent);
                 break;
             }
 
         }
 
     }
+
+    void enableViews(View... views) {
+        for (View view : views) {
+
+            view.setEnabled(true);
+
+        }
+    }
+
+
+    void disableViews(View... views) {
+        for (View view : views) {
+
+            view.setEnabled(false);
+
+        }
+    }
+
 
 
 }

@@ -2,18 +2,46 @@ package com.hecvd19.pas.login.models;
 
 import android.util.Patterns;
 
+import androidx.annotation.NonNull;
 import androidx.lifecycle.MutableLiveData;
 
-import com.hecvd19.pas.model.Citizen;
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
+import com.google.firebase.auth.AuthResult;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 
 public class LoginRepository {
 
     private static final String TAG = "LoginRepository";
+    private FirebaseAuth mAuth;
+
+    LoginRepository() {
+        mAuth = FirebaseAuth.getInstance();
+    }
 
 
-    public MutableLiveData<Citizen> loginUser() {
+    public MutableLiveData<String> loginUser(String email, String password) {
 
-        MutableLiveData<Citizen> data = new MutableLiveData<>();
+        final MutableLiveData<String> data = new MutableLiveData<>();
+
+        mAuth.signInWithEmailAndPassword(email, password).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
+            @Override
+            public void onComplete(@NonNull Task<AuthResult> task) {
+                if (task.isSuccessful()) {
+                    FirebaseUser user = mAuth.getCurrentUser();
+                    if (user != null && user.isEmailVerified()) {
+                        data.setValue(LoginMessages.LOGIN_SUCCESS);
+                    } else {
+                        data.setValue(LoginMessages.LOGIN_EMAIL_NOT_VERIFIED);
+                    }
+                } else {
+                    data.setValue(LoginMessages.LOGIN_ERROR);
+                }
+            }
+        });
+
+
         return data;
     }
 

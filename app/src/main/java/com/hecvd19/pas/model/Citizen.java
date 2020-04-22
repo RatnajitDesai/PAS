@@ -3,19 +3,18 @@ package com.hecvd19.pas.model;
 public class Citizen {
 
     private String username;
-    private String pinCode, district, state, country;
+    private String pinCode, city, district, state;
     private String email;
 
     public Citizen() {
-
     }
 
-    public Citizen(String username, String pinCode, String district, String state, String country, String email) {
+    public Citizen(String username, String pinCode, String city, String district, String state, String email) {
         this.username = username;
         this.pinCode = pinCode;
+        this.city = city;
         this.district = district;
         this.state = state;
-        this.country = country;
         this.email = email;
     }
 
@@ -35,6 +34,14 @@ public class Citizen {
         this.pinCode = pinCode;
     }
 
+    public String getCity() {
+        return city;
+    }
+
+    public void setCity(String city) {
+        this.city = city;
+    }
+
     public String getDistrict() {
         return district;
     }
@@ -51,14 +58,6 @@ public class Citizen {
         this.state = state;
     }
 
-    public String getCountry() {
-        return country;
-    }
-
-    public void setCountry(String country) {
-        this.country = country;
-    }
-
     public String getEmail() {
         return email;
     }
@@ -72,9 +71,9 @@ public class Citizen {
         return "Citizen{" +
                 "username='" + username + '\'' +
                 ", pinCode='" + pinCode + '\'' +
+                ", city='" + city + '\'' +
                 ", district='" + district + '\'' +
                 ", state='" + state + '\'' +
-                ", country='" + country + '\'' +
                 ", email='" + email + '\'' +
                 '}';
     }

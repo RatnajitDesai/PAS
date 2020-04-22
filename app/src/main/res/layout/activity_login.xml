@@ -7,14 +7,15 @@
     android:layout_centerInParent="true"
     tools:context=".login.ui.LoginActivity">
 
-    <RelativeLayout
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_centerInParent="true">
+        android:layout_centerInParent="true"
+        android:orientation="vertical">
 
 
         <com.google.android.material.textfield.TextInputLayout
-            android:id="@+id/tilUsername"
+            android:id="@+id/tilEmail"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginStart="24dp"
@@ -24,7 +25,7 @@
             <com.google.android.material.textfield.TextInputEditText
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:id="@+id/username"
+                android:id="@+id/txtEmail"
                 android:hint="@string/prompt_email"
                 android:inputType="textEmailAddress"
                 android:selectAllOnFocus="true" />
@@ -38,9 +39,9 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="24dp"
             android:layout_marginEnd="24dp"
+            android:layout_marginTop="24dp"
             style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-            android:selectAllOnFocus="true"
-            android:layout_below="@+id/tilUsername">
+            android:selectAllOnFocus="true">
 
             <com.google.android.material.textfield.TextInputEditText
                 android:layout_width="match_parent"
@@ -48,35 +49,39 @@
                 android:hint="@string/prompt_password"
                 android:imeOptions="actionDone"
                 android:inputType="textPassword"
-                android:id="@+id/password" />
+                android:id="@+id/txtPassword" />
 
 
         </com.google.android.material.textfield.TextInputLayout>
 
         <com.google.android.material.button.MaterialButton
             android:id="@+id/login"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="match_parent"
+            android:layout_height="?actionBarSize"
             android:text="@string/action_sign_in"
-            android:enabled="false"
-            android:layout_below="@+id/tilPassword"
-            android:layout_centerInParent="true" />
+            android:layout_marginTop="10dp"
+            android:layout_marginStart="24dp"
+            android:layout_marginEnd="24dp"
+            android:enabled="false" />
 
 
         <com.google.android.material.button.MaterialButton
             android:id="@+id/register"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="match_parent"
+            android:layout_height="?actionBarSize"
             android:text="@string/action_register"
-            android:layout_below="@+id/login"
-            android:layout_centerInParent="true" />
+            android:layout_marginEnd="24dp"
+            android:layout_marginStart="24dp"
+            android:layout_marginTop="10dp" />
 
-        <ProgressBar
-            android:id="@+id/loading"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_centerInParent="true"
-            android:visibility="gone" />
 
-    </RelativeLayout>
+    </LinearLayout>
+
+    <ProgressBar
+        android:id="@+id/progressBar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:visibility="gone"
+        android:layout_centerInParent="true" />
+
 </RelativeLayout>

@@ -5,11 +5,22 @@
     <string name="tab_text_2">My Channels</string>
     <string name="title_activity_login">Sign in</string>
     <string name="prompt_email">Email</string>
+    <string name="prompt_district">District</string>
+    <string name="prompt_city">City</string>
+    <string name="prompt_state">State</string>
+    <string name="prompt_pinCode">Pin Code</string>
+    <string name="prompt_username">Username</string>
     <string name="prompt_password">Password</string>
     <string name="action_sign_in">Sign in</string>
     <string name="action_register">Register</string>
     <string name="welcome">"Welcome !"</string>
-    <string name="invalid_username">Not a valid username</string>
-    <string name="invalid_password">Password must be >5 characters</string>
+    <string name="invalid_username">Should be at least 4 characters long</string>
+    <string name="invalid_password">Password must be 6 characters long</string>
     <string name="login_failed">"Login failed"</string>
+    <string name="validate">Validate</string>
+    <string name="invalid_email">Invalid Email ID</string>
+    <string name="invalid_pincode">Invalid pincode</string>
+    <string name="pin_validated">Pin Verified!</string>
+    <string name="pin_invalid">Invalid Pincode provided!</string>
+    <string name="select_city">Found below cities. Choose one:</string>
 </resources>

@@ -1,4 +1,4 @@
-package com.hecvd19.pas.home.ui;
+package com.hecvd19.pas.home.adapters;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;

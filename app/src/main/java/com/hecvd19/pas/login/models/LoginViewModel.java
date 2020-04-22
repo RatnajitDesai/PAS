@@ -3,17 +3,16 @@ package com.hecvd19.pas.login.models;
 import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.ViewModel;
 
-import com.hecvd19.pas.model.Citizen;
-
 public class LoginViewModel extends ViewModel {
-    LoginRepository repository;
+
+    private LoginRepository repository;
 
     public LoginViewModel() {
         repository = new LoginRepository();
     }
 
-    public MutableLiveData<Citizen> loginUser() {
-        return repository.loginUser();
+    public MutableLiveData<String> loginUser(String email, String password) {
+        return repository.loginUser(email, password);
     }
 
     public MutableLiveData<Boolean> verifyUsername(String username) {

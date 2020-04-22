@@ -12,9 +12,9 @@ import androidx.viewpager.widget.ViewPager;
 
 import com.google.android.material.tabs.TabLayout;
 import com.hecvd19.pas.R;
+import com.hecvd19.pas.home.adapters.SectionPagerAdapter;
 import com.hecvd19.pas.home.tabs.ChannelsFragment;
 import com.hecvd19.pas.home.tabs.PostFragment;
-import com.hecvd19.pas.home.ui.SectionPagerAdapter;
 
 public class MainActivity extends AppCompatActivity {
     Toolbar toolbar;
