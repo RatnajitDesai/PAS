@@ -8,20 +8,17 @@ import androidx.lifecycle.MutableLiveData;
 
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
-import com.google.firebase.Timestamp;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.hecvd19.pas.R;
 import com.hecvd19.pas.model.ApiResponse;
+import com.hecvd19.pas.model.Citizen;
 import com.hecvd19.pas.restApi.JsonPinCodeApi;
-import com.hecvd19.pas.utilities.DatabaseFields;
+import com.hecvd19.pas.utilities.Constants;
 
-import java.util.Date;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -174,21 +171,23 @@ class RegisterViewModelRepository {
                                 if (task.isSuccessful()) {
                                     liveData.postValue(UserCreationMessages.USER_EMAIL_LINK_SENT);
 
-                                    //Create Map for citizen data
-                                    Map<String, Object> citizen_data = new HashMap<>();
-                                    citizen_data.put(DatabaseFields.FL_CITIZENS_USER_ID, user.getUid());
-                                    citizen_data.put(DatabaseFields.FL_CITIZENS_USER_NAME, username);
-                                    citizen_data.put(DatabaseFields.FL_CITIZENS_EMAIL, email);
-                                    citizen_data.put(DatabaseFields.FL_CITIZENS_PIN_CODE, pinCode);
-                                    citizen_data.put(DatabaseFields.FL_CITIZENS_CITY, city);
-                                    citizen_data.put(DatabaseFields.FL_CITIZENS_DISTRICT, district);
-                                    citizen_data.put(DatabaseFields.FL_CITIZENS_STATE, state);
-                                    citizen_data.put(DatabaseFields.FL_CITIZENS_TIMESTAMP, new Timestamp(new Date()));
+//                                    //Create Map for citizen data
+//                                    Map<String, Object> citizen_data = new HashMap<>();
+//                                    citizen_data.put(Constants.FL_CITIZENS_USER_ID, user.getUid());
+//                                    citizen_data.put(Constants.FL_CITIZENS_USER_NAME, username);
+//                                    citizen_data.put(Constants.FL_CITIZENS_EMAIL, email);
+//                                    citizen_data.put(Constants.FL_CITIZENS_PIN_CODE, pinCode);
+//                                    citizen_data.put(Constants.FL_CITIZENS_CITY, city);
+//                                    citizen_data.put(Constants.FL_CITIZENS_DISTRICT, district);
+//                                    citizen_data.put(Constants.FL_CITIZENS_STATE, state);
+//                                    citizen_data.put(Constants.FL_CITIZENS_TIMESTAMP, new Timestamp(new Date()));
+
+                                    Citizen citizen = new Citizen(username, pinCode, city, district, state, email, user.getUid());
 
                                     //store user to cloud document
-                                    firestore.collection(DatabaseFields.COL_CITIZENS)
+                                    firestore.collection(Constants.COL_CITIZENS)
                                             .document(user.getUid())
-                                            .set(citizen_data).addOnCompleteListener(new OnCompleteListener<Void>() {
+                                            .set(citizen).addOnCompleteListener(new OnCompleteListener<Void>() {
                                         @Override
                                         public void onComplete(@NonNull Task<Void> task) {
 

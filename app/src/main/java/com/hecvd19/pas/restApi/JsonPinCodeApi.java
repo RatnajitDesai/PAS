@@ -15,5 +15,4 @@ public interface JsonPinCodeApi {
     @GET("")
     Call<List<ApiResponse>> getApiResponse(@Url String pinCode);
 
-
 }

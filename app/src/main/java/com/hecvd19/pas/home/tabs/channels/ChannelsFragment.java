@@ -1,4 +1,4 @@
-package com.hecvd19.pas.home.tabs;
+package com.hecvd19.pas.home.tabs.channels;
 
 import android.os.Bundle;
 import android.view.LayoutInflater;

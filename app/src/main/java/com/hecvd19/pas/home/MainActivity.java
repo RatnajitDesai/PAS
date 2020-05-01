@@ -3,7 +3,7 @@ package com.hecvd19.pas.home;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.widget.Toast;
+import android.view.View;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
@@ -11,12 +11,13 @@ import androidx.appcompat.widget.Toolbar;
 import androidx.viewpager.widget.ViewPager;
 
 import com.google.android.material.tabs.TabLayout;
+import com.google.firebase.auth.FirebaseAuth;
 import com.hecvd19.pas.R;
 import com.hecvd19.pas.home.adapters.SectionPagerAdapter;
-import com.hecvd19.pas.home.tabs.ChannelsFragment;
-import com.hecvd19.pas.home.tabs.PostFragment;
+import com.hecvd19.pas.home.tabs.posts.PostFragment;
 
 public class MainActivity extends AppCompatActivity {
+    FirebaseAuth mAuth = FirebaseAuth.getInstance();
     Toolbar toolbar;
 
     @Override
@@ -28,9 +29,12 @@ public class MainActivity extends AppCompatActivity {
         TabLayout tabLayout = findViewById(R.id.tabs);
         ViewPager viewPager = findViewById(R.id.view_pager);
         toolbar = findViewById(R.id.toolbar);
-        tabLayout.setupWithViewPager(viewPager);
+
+        // tabLayout.setupWithViewPager(viewPager);
+        tabLayout.setVisibility(View.GONE);
+
         adapter.addFragment(new PostFragment(), "Posts");
-        adapter.addFragment(new ChannelsFragment(), "My Channels");
+        // adapter.addFragment(new ChannelsFragment(),"My Channels");
         viewPager.setAdapter(adapter);
         setSupportActionBar(toolbar);
 
@@ -46,7 +50,8 @@ public class MainActivity extends AppCompatActivity {
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
 
         if (item.getItemId() == R.id.logout) {
-            Toast.makeText(this, "Log out!", Toast.LENGTH_SHORT).show();
+            mAuth.signOut();
+            finish();
         }
 
         return true;

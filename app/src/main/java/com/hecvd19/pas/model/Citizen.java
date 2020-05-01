@@ -3,19 +3,21 @@ package com.hecvd19.pas.model;
 public class Citizen {
 
     private String username;
-    private String pinCode, city, district, state;
+    private String pin_code, city, district, state;
     private String email;
+    private String user_id;
 
     public Citizen() {
     }
 
-    public Citizen(String username, String pinCode, String city, String district, String state, String email) {
+    public Citizen(String username, String pin_code, String city, String district, String state, String email, String user_id) {
         this.username = username;
-        this.pinCode = pinCode;
+        this.pin_code = pin_code;
         this.city = city;
         this.district = district;
         this.state = state;
         this.email = email;
+        this.user_id = user_id;
     }
 
     public String getUsername() {
@@ -26,12 +28,12 @@ public class Citizen {
         this.username = username;
     }
 
-    public String getPinCode() {
-        return pinCode;
+    public String getPin_code() {
+        return pin_code;
     }
 
-    public void setPinCode(String pinCode) {
-        this.pinCode = pinCode;
+    public void setPin_code(String pin_code) {
+        this.pin_code = pin_code;
     }
 
     public String getCity() {
@@ -66,15 +68,25 @@ public class Citizen {
         this.email = email;
     }
 
+    public String getUser_id() {
+        return user_id;
+    }
+
+    public void setUser_id(String user_id) {
+        this.user_id = user_id;
+    }
+
     @Override
     public String toString() {
         return "Citizen{" +
                 "username='" + username + '\'' +
-                ", pinCode='" + pinCode + '\'' +
+                ", pin_code='" + pin_code + '\'' +
                 ", city='" + city + '\'' +
                 ", district='" + district + '\'' +
                 ", state='" + state + '\'' +
                 ", email='" + email + '\'' +
+                ", user_id='" + user_id + '\'' +
                 '}';
     }
 }
+

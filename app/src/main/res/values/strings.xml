@@ -23,4 +23,14 @@
     <string name="pin_validated">Pin Verified!</string>
     <string name="pin_invalid">Invalid Pincode provided!</string>
     <string name="select_city">Found below cities. Choose one:</string>
+    <string name="post_image">Post Image</string>
+    <string name="timestamp">timestamp</string>
+    <string name="added">added</string>
+    <string name="modified">modified</string>
+    <string name="removed">removed</string>
+    <string name="district">District</string>
+    <string name="state">State</string>
+    <string name="pin_code">Pin Code</string>
+    <string name="click_to_select">Click to select</string>
+    <string name="select_district">Select District</string>
 </resources>

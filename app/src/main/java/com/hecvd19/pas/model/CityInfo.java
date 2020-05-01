@@ -7,6 +7,9 @@ public class CityInfo {
     @SerializedName("Name")
     private String name;
 
+    @SerializedName("City")
+    private String city;
+
     @SerializedName("District")
     private String district;
 
@@ -26,6 +29,9 @@ public class CityInfo {
         return name;
     }
 
+    public String getCity() {
+        return city;
+    }
     public String getDistrict() {
         return district;
     }

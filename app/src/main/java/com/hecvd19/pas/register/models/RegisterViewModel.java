@@ -33,6 +33,7 @@ public class RegisterViewModel extends ViewModel {
         return repository.getApiResponse(pinCode);
     }
 
+
     public MutableLiveData<String> registerCitizen(String username, String email, String pinCode, String city, String district, String state, String password) {
 
         return repository.registerCitizen(username, email, pinCode, city, district, state, password);
