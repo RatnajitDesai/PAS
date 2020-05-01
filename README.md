@@ -5,7 +5,7 @@ Public address system
 
 Public Address system is an android based system.It consists of two applications:
 1) PAS system for citizens
-2) PAS system for authorities like government departments
+2) PAS system for authorities like government departments - (https://github.com/RatnajitDesai/PASDEPT)
 
 It allows citizens to view various messages posted by government departments targeted towards the region they are currently living. 
 e.g. if citizen A is living in area with pincode-123456, then all the government messages that are intended for pincode 123456 will be visible to citizen A.
